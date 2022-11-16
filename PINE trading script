@@ -1,0 +1,19 @@
+//@version
+ma50  = ta.ema(close, 50)
+ma150 = ta.ema(close, 150)
+
+length = input.int(5, minval=1)
+k = ta.stoch(close, high, low, length)
+
+
+
+if ma50<ma150 and ta.stoch(close, high, low, length) < 20
+    alert("shortt", alert.freq_once_per_bar_close)
+    short = true
+
+if ma50>ma150 and ta.stoch(close, high, low, length) > 80
+
+    alert("longf", alert.freq_once_per_bar_close)
+    long = true 
+
+plot(k, color=blue)
